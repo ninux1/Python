@@ -15,9 +15,6 @@ class Parent:
      print "Parent Attr :", Parent.parentAttr
 
 class Child(Parent):
-   def __init__(self):
-     print "Calling child constructor"
-
    def childMethod(self):
      print "Calling Child method"
 
