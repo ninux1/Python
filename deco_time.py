@@ -1,9 +1,17 @@
 #!/usr/bin/env python
 
+from datetime import datetime
+import time
 
+def timedeco(func):
+    def action(num):
+        start = datetime.now()
+        res = func(num)
+        print(res)
+        return datetime.now() - start
+    return action
 
-
-
+@timedeco
 def factorial(num):
     result = num
     while(num != 1):
@@ -13,8 +21,4 @@ def factorial(num):
 
 
 if __name__ == '__main__':
-    print(factorial(6))
-
-
-
-
+    print("The time required to execute 6 factorial is {} microseconds".format(factorial(6)))
