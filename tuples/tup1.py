@@ -1,12 +1,31 @@
 #!/usr/bin/env python
 
-t = ('hello',)
+"""Tuples are simply a comma separated list of elements but cannot be modified like list
+   and are also know as immutable"""
 
-u = ('world',)
+t = (1,2,3,4)
+s = (5,6,7,8)
 
-x = t + u
+t = t + s
 
-print(x)
+print(type(t))
+print(type(s))
+
+print(t)
+
+t = tuple('lupins')
+
+print(t)
+
+
+
+
+
+
+
+
+
+
 
 
 
