@@ -15,7 +15,7 @@ def mul(num):
     print('From the Decorated function {}'.format(num))
 
 foo = called(mul)   # foo has the decorated function which is returned from the wrapper function called()
-print(foo(10))    # finally invoking OR derefrencing the foo to call execute the decorated function.
+print(foo(10))    # finally invoking OR derefrencing the foo to invoke the decorated function.
 
 
 
