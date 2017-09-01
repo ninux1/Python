@@ -12,7 +12,10 @@ def parse_logfile(file):
             wp.write(rf)
 
     #p_dict = json.loads(rf)
-    print(p_dict['colors'][0]['color'])
+    #print(p_dict['colors'][0]['color'])
+
+    json_str = json.dumps(p_dict)
+    print(json_str[2])
 
     with open('bar.json', 'w') as fp:
         json.dump(p_dict, fp)
