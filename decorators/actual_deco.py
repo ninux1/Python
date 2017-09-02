@@ -14,6 +14,7 @@ def called(func):  # This is a function to receive the function to be modified/d
 def mul(num):
     print('From the Decorated function {}'.format(num))
 
-#foo = called(mul) # foo has the decorated function which is returned from the wrapper function called()
+foo = called(mul) # foo has the decorated function which is returned from the wrapper function called()
+foo(10)
 #mul=called(mul)   # Now instead of new function variable what if we replace the original function with its modified/decorated version directly.
-print(mul(10))     # Derefrencing/invoking the decorated/modified function. The Arguments i.e 10 from here directly goes to decorator function exe.
+#print(mul(10))     # Derefrencing/invoking the decorated/modified function. The Arguments i.e 10 from here directly goes to decorator function exe.
