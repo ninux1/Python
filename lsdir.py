@@ -15,6 +15,6 @@ def listdir(path):
    else:
        print("Plz enter a path to a directory")
 
-listdir('/home/ninux/temp')
+listdir('C:\Pycharm\Python')
 
 

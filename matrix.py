@@ -7,7 +7,7 @@ matrix = [[1,2,3],[4,5,6],[7,8,9]]
 # Addition of the list elements Can be done as below for loop.
 
 #for index in matrix:
-#	print sum(index)
+#	print(sum(index))
 
 # Is same as below 
 # Map function always returns a list
@@ -15,5 +15,5 @@ matrix = [[1,2,3],[4,5,6],[7,8,9]]
 # Also the sum function below needs a iterable entity like list
 # So the whole for construct can be done using a single map function
 
-print map(sum,matrix)
+print(list(map(sum, matrix)))
 

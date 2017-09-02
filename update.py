@@ -42,7 +42,7 @@ def update_template():
          fname = os.path.splitext(os.path.basename(element))[0]
          fext = os.path.splitext(os.path.basename(element))[1]
 
-         data['GenericPreProcessingToGVCFWorkflow.sample_name'] = fname
+         data['GenericPreProcessingToGVCFWorkflow.sample_name']  = fname
 
          ext = os.path.splitext(data['GenericPreProcessingToGVCFWorkflow.base_file_name'])[1]
          data['GenericPreProcessingToGVCFWorkflow.base_file_name'] = fname+ext

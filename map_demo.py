@@ -5,13 +5,14 @@
 temp_data = (36.5, 37, 37.5, 39)
 
 def fahrenheit(T):
-    return ((float(9)/5)*T + 32)
+    return (float(9)/5)*T + 32
+
 
 def celsius(T):
     return (float(5)/9)*(T-32)
 
 F = map(fahrenheit, temp_data)
-C = map(celsius, F)
+print("Fahrenheit = {}".format(list(F)))
 
-print "Fahrenhit = ", F
-print "Celsius = ", C
+C = map(celsius, list(F))
+print("Celsius = {}".format(list(C)))
