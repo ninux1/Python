@@ -20,24 +20,27 @@ class Weather():
         self.sep = ','
         self.start_date = None
         self.end_date = self.parse_date(strdate)
-        self.csv = self.fetch_weather_info()
+        self.leest = self.fetch_weather_info()
 
     def parse_date(self, strdate):
-        year = int(strdate[:-4])
-        month = int(strdate[4:-2])
-        day = int(strdate[6:])
-        dateformat = date(year, month, day)
+        l = strdate.split('-')
+        print(int(l[2]), int(l[1]), int(l[0]))
+        #year = int(strdate[:-4])
+        #month = int(strdate[4:-2])
+        #day = int(strdate[6:])
+        dateformat = date(int(l[0]), int(l[1]), int(l[2]))
         return dateformat
 
     def fetch_weather_info(self):
         i = 7
+        urllist = []
         while i:
             self.start_date = self.end_date - timedelta(days=1)
             url_elements = [self.strcity, self.city, self.sep, self.state, self.amp, self.str_start_date,
                             str(self.start_date), self.amp, self.str_end_date, str(self.end_date),
                             self.amp, self.str_key, self.api_key]
             url = ''.join([self.base_url, ''.join(url_elements)])
-            print(url)
+            urllist.append(url)
             self.end_date = self.start_date
             i -= 1
-        return csvfile
+        return urllist
