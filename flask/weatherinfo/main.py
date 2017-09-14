@@ -21,9 +21,10 @@ def main():
     obj = None
     if request.method == 'POST':
         wdate = request.form['name']
+        city = request.form['city']
+        state = request.form['state']
         if form.validate():
-            flash('The Date you entered is ' + wdate)
-            obj = Weather(str(wdate))
+            obj = Weather(str(wdate), city, state)
         else:
             flash('All the form fields are required. ')
     if obj:
@@ -32,9 +33,12 @@ def main():
         return render_template('form.html', form=form)
 
 
-@app.route('/winfo/<string:dat>', methods=['GET'])
-def get_weather_info(dat):
-    ret = Weather(dat)
+@app.route('/winfo', methods=['GET'])
+def get_weather_info():
+    wdate = request.args.get('date')
+    wcity = request.args.get('city')
+    wstate = request.args.get('state')
+    ret = Weather(wdate, wcity, wstate)
     return jsonify(ret.winfo)
 
 if __name__ == '__main__':

@@ -16,8 +16,9 @@
   <h2><p align="center">Welcome to Arcus Global Weather Service</h2>
    <p align="center"> You will get the weather information for the previous week from the date which you enter below
    </p>
-   <p align="center"> This site has REST functionality and the API "http://hostname>/winfo/yyyy-mm-dd"
-                      can also be used to get the required information.
+   <p align="center"> This site has a REST api exposed. Here is a sample API
+       "http://hostname/winfo?date=2017-9-10&city=Irvine&state=CA" can also be used to get the required
+       information.
    </p>
 
   <form  action="" method="post" role="form">
@@ -25,6 +26,14 @@
     <div class="form-group">
       <label for="name"><p align="center">Enter Date for Weather Info :</label>
       <input type="text" class="form-control" id="name" name="name" placeholder="yyyy-mm-dd">
+      <label for="name"><p align="center">Enter City :</label>
+      <input type="text" class="form-control" id="city" name="city" placeholder="city">
+      <p align="center">Select State :</label>
+      <select name="state">
+          <option value="CA">CA</option>
+          <option value="OR">OR</option>
+      </select>
+
     </div>
     <p align="center">
     <button type="submit" class="btn btn-success">Submit</button>

@@ -6,11 +6,12 @@ from datetime import timedelta
 
 
 class Weather():
-    def __init__(self, strdate):
+    def __init__(self, strdate, city, state):
         self.api_key = '463a6360cd5c47209a51ab56217d1a93'
         self.base_url = 'https://api.weatherbit.io/v2.0/history/daily?'
-        self.city = 'Irvine'
-        self.state = 'CA'
+        self.city = city
+        self.state = state
+        self.country = 'US'
         self.amp = '&'
         self.strcity = 'city='
         self.strstate = 'state='
@@ -31,8 +32,12 @@ class Weather():
     def fetch_weather_info(self):
         i = 7
         counter = 0
-        weather = {}
-        weather.setdefault("data", [])
+        weather = {"city":self.city,
+                   "state":self.state,
+                   "country":self.country,
+                   "data":[]
+                  }
+
         while i:
            self.start_date = self.end_date - timedelta(days=1)
            url_elements = [self.strcity, self.city, self.sep, self.state, self.amp, self.str_start_date,
