@@ -1,10 +1,9 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 from business import Weather
 from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from flask import jsonify
-import json
 
 
 app = Flask('__name__')
@@ -25,11 +24,10 @@ def main():
         if form.validate():
             flash('The Date you entered is ' + wdate)
             obj = Weather(str(wdate))
-
         else:
             flash('All the form fields are required. ')
     if obj:
-        return jsonify(obj.leest)
+        return jsonify(obj.winfo)
     else:
         return render_template('form.html', form=form)
 
@@ -37,8 +35,7 @@ def main():
 @app.route('/winfo/<string:dat>', methods=['GET'])
 def get_weather_info(dat):
     ret = Weather(dat)
-    return jsonify(ret.leest)
-
+    return jsonify(ret.winfo)
 
 if __name__ == '__main__':
     app.run(port=7000)

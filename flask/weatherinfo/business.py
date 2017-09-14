@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import requests
+import json, requests
 from datetime import date
 from datetime import timedelta
 
@@ -20,27 +20,35 @@ class Weather():
         self.sep = ','
         self.start_date = None
         self.end_date = self.parse_date(strdate)
-        self.leest = self.fetch_weather_info()
+        self.winfo = self.fetch_weather_info()
 
     def parse_date(self, strdate):
         l = strdate.split('-')
         print(int(l[2]), int(l[1]), int(l[0]))
-        #year = int(strdate[:-4])
-        #month = int(strdate[4:-2])
-        #day = int(strdate[6:])
         dateformat = date(int(l[0]), int(l[1]), int(l[2]))
         return dateformat
 
     def fetch_weather_info(self):
         i = 7
-        urllist = []
+        counter = 0
+        weather = {}
+        weather.setdefault("data", [])
         while i:
-            self.start_date = self.end_date - timedelta(days=1)
-            url_elements = [self.strcity, self.city, self.sep, self.state, self.amp, self.str_start_date,
-                            str(self.start_date), self.amp, self.str_end_date, str(self.end_date),
-                            self.amp, self.str_key, self.api_key]
-            url = ''.join([self.base_url, ''.join(url_elements)])
-            urllist.append(url)
-            self.end_date = self.start_date
-            i -= 1
-        return urllist
+           self.start_date = self.end_date - timedelta(days=1)
+           url_elements = [self.strcity, self.city, self.sep, self.state, self.amp, self.str_start_date,
+                             str(self.start_date), self.amp, self.str_end_date, str(self.end_date),
+                             self.amp, self.str_key, self.api_key]
+           url = ''.join([self.base_url, ''.join(url_elements)])
+           resp = requests.get(url, stream=True)
+           resp = resp.json()
+           weather['data'].append({ "datetime":resp['data'][0]['datetime'],
+                                    "max_wind_spd":resp['data'][0]['max_wind_spd'],
+                                    "max_temp":resp['data'][0]['max_temp'],
+                                    "min_temp":resp['data'][0]['min_temp'],
+                                    "clouds":resp['data'][0]['clouds'] })
+
+           self.end_date = self.start_date
+           i -= 1
+           counter+=1
+
+        return weather
