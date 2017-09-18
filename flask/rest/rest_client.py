@@ -22,7 +22,8 @@ headers = {'Content-Type' : 'application/json, charset=utf-8'}
 resp = requests.post(url, data=json.dumps(payload), headers= headers)
 
 print(resp.status_code)
-print(resp.text)
+#print(resp.text)
+print(json.dumps(resp.json()))
 
 
 
