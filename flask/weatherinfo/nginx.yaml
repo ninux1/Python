@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: weatherstation
+spec:
+  replicas: 1
+  template:
+    metadata:        
+      labels:
+        app: web 
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /shared
+          name: data
+      containers:
+      - name: weatherapp
+        image: gcr.io/weatherinfo-179823/production:2.0
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /shared1
+          name: data   
+      volumes:
+        - name: data
+          emptyDir: {}

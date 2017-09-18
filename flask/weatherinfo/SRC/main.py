@@ -4,7 +4,6 @@
 from business import Weather
 from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
-from flask import jsonify
 from json2html import *
 
 
@@ -16,7 +15,7 @@ class ReusableForm(Form):
     name = TextField('Plz enter the date for weather info :', validators=[validators.required()])
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/weather', methods=['GET', 'POST'])
 def main():
     form = ReusableForm(request.form)
     print(form.errors)
@@ -36,7 +35,7 @@ def main():
         return render_template('form.html', form=form)
 
 
-@app.route('/winfo', methods=['GET'])
+@app.route('/wapi', methods=['GET'])
 def get_weather_info():
     wdate = request.args.get('date')
     wcity = request.args.get('city')
