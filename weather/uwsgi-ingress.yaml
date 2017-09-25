@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+   name: weather-ingress
+spec:
+   rules:
+   - http:
+       paths:
+       - path: /
+         backend:
+           serviceName: nginx
+           servicePort: 80
+       - path: /arcus
+         backend:
+           serviceName: weatherinfo
+           servicePort: 8080
