@@ -34,14 +34,5 @@ def main():
     else:
         return render_template('form.html', form=form)
 
-
-@app.route('/wapi', methods=['GET'])
-def get_weather_info():
-    wdate = request.args.get('date')
-    wcity = request.args.get('city')
-    wstate = request.args.get('state')
-    ret = Weather(wdate, wcity, wstate)
-    return json2html.convert(json=ret.winfo)
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
