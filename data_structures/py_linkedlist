@@ -7,40 +7,41 @@ class Node:
         self.next = None
 
 
-def populate(node):
-    l = node
-    for i in range(10):
-        n = Node(i)
-        while l.next is not None:
-            l = l.next
-        l.next = n
-        l = node
-    return l
+class LinkedList:
+    def __init__(self, data):
+        self.head = Node(10)
+
+    def addnode(self, data):
+        new = Node(data)
+        new.next = self.head
+        self.head = new
 
 
-def print_list(l):
-    while l is not None:
-        print(l.data)
-        l = l.next
+    def print_list(self):
+        temp = self.head
+        while temp is not None:
+          print(temp.data)
+          temp = temp.next
 
+    def remove_node(self, data):
+        temp = self.head
+        prevnode = None
 
-def remove_node(l, data):
-    temp = l
-    prevnode = None
-
-    while temp is not None:
-        if temp.data == data:
-            prevnode.next = temp.next
-            temp = None
-            break
-        prevnode = temp
-        temp = temp.next
-    return l
+        while temp is not None:
+           if temp.data == data:
+              prevnode.next = temp.next
+              temp = None
+              break
+           prevnode = temp
+           temp = temp.next
 
 
 if __name__ == '__main__':
-    f = Node(100)
-    lst = populate(f)
-    print_list(lst)
-    remove_node(lst, 8)
-    print_list(lst)
+    lst = LinkedList(Node)
+    lst.addnode(20)
+    lst.addnode(30)
+    lst.addnode(40)
+    lst.addnode(50)
+    lst.print_list()
+    lst.remove_node(30)
+    lst.print_list()
