@@ -12,7 +12,6 @@ for i in range(len(a) - 1):
 
     if index is not i:
         temp = a[index]
-
         a[index] = a[i]
         a[i] = temp
 
