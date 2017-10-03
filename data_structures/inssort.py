@@ -7,7 +7,7 @@ def insertion_sort(a):
         j = i+1
         while j > 0 and a[j] < a[j-1]:
             swap(a, j)  # This Operation is the bottle neck in insertion sort
-            j -=1
+            j -= 1
     return a
 
 
