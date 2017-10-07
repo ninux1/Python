@@ -26,10 +26,15 @@ class Heap:
             pidx = (pidx - 1) // 2
 
     def heap_pop(self):
-        parentidx = 0
-        popped = self.heap[0]
-        self.heap[0] = self.heap[len(self.heap) - 1]
-        del self.heap[len(self.heap) - 1]
+        if len(self.heap) > 0:
+            parentidx = 0
+            popped = self.heap[0]
+            self.heap[0] = self.heap[len(self.heap) - 1]
+            del self.heap[len(self.heap) - 1]
+            if len(self.heap) == 0:
+                return 'Last Element popped {}'.format(popped)
+        else:
+            return 'Heap Empty'
         self.reconstruct_heap(parentidx)
         return popped
 
@@ -82,6 +87,11 @@ if __name__ == '__main__':
     h.heap_push(("Node5", 6))
     h.heap_push(("Node10", 16))
 
+    print(h.heap_pop())
+    print(h.heap_pop())
+    print(h.heap_pop())
+    print(h.heap_pop())
+    print(h.heap_pop())
     print(h.heap_pop())
     print(h.heap_pop())
     print(h.heap_pop())
