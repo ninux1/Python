@@ -57,9 +57,9 @@ class Heap:
                     self.swap(parentidx, leftidx)
                     parentidx = (2*parentidx) + 1
                 else:
-                    if self.heap[rightidx][1] == max(self.heap[leftidx][1], self.heap[rightidx][1]):
-                        self.swap(parentidx, rightidx)
-                        parentidx = (2*parentidx) + 2
+                    # ifself.heap[rightidx][1]==max(self.heap[leftidx][1],self.heap[rightidx][1]):
+                    self.swap(parentidx, rightidx)
+                    parentidx = (2*parentidx) + 2
             else:
                 return
 
