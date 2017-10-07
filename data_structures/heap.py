@@ -48,12 +48,13 @@ class Heap:
                 return
         else:
             if self.heap[parentidx][1] < max(self.heap[leftidx][1], self.heap[rightidx][1]):
-                if self.heap[leftidx] == max(self.heap[leftidx], self.heap[rightidx]):
+                if self.heap[leftidx][1] == max(self.heap[leftidx][1], self.heap[rightidx][1]):
                     self.swap(parentidx, leftidx)
                     parentidx = (2*parentidx) + 1
-                if self.heap[rightidx] == max(self.heap[leftidx], self.heap[rightidx]):
-                    self.swap(parentidx, rightidx)
-                    parentidx = (2*parentidx) + 2
+                else:
+                    if self.heap[rightidx][1] == max(self.heap[leftidx][1], self.heap[rightidx][1]):
+                        self.swap(parentidx, rightidx)
+                        parentidx = (2*parentidx) + 2
             else:
                 return
 
@@ -81,6 +82,8 @@ if __name__ == '__main__':
     h.heap_push(("Node5", 6))
     h.heap_push(("Node10", 16))
 
+    print(h.heap_pop())
+    print(h.heap_pop())
     print(h.heap_pop())
     print(h.heap_pop())
 
