@@ -40,19 +40,51 @@ if __name__ == "__main__":
     ng = Node('G')
     nh = Node('H')
     ni = Node('I')
+    nl = Node('L')
+    nm = Node('M')
+    nn = Node('N')
+    no = Node('O')
+    np = Node('P')
+    nr = Node('R')
+    ns = Node('S')
+    nt = Node('T')
+    nu = Node('U')
+    nx = Node('X')
+    nw = Node('W')
+    ny = Node('Y')
+    nz = Node('Z')
+
 
     # define edges/connections.
 
     na.neighbors.append(nb)
     na.neighbors.append(nc)
-
-    nb.neighbors.append(nd)
-    nb.neighbors.append(ne)
-    ne.neighbors.append(nh)
+    na.neighbors.append(ne)
 
     nc.neighbors.append(nf)
     nc.neighbors.append(ng)
-    nf.neighbors.append(ni)
+    nc.neighbors.append(nd)
+
+    nf.neighbors.append(nh)
+    nh.neighbors.append(nz)
+
+    ng.neighbors.append(ni)
+    ni.neighbors.append(ny)
+
+    nb.neighbors.append(nl)
+    nl.neighbors.append(nm)
+    nm.neighbors.append(nn)
+
+    nn.neighbors.append(no)
+    nn.neighbors.append(np)
+
+    ne.neighbors.append(nu)
+    ne.neighbors.append(nx)
+    ne.neighbors.append(nw)
+    ne.neighbors.append(nt)
+
+    nt.neighbors.append(nr)
+    nt.neighbors.append(ns)
 
     dfs = Dfs()
     dfs.pushq_iterate(na)
